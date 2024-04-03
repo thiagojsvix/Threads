@@ -18,6 +18,7 @@ internal class Program
                 2) Processamento Multi Thread
                 3) Processamento Paralelo com Single Thread
                 4) Processamento Paralelo com Multi Thread
+                5) Processamento Paralelo com Multi THread e Limite de Processos (3)
             """);
         Console.WriteLine();
 
@@ -45,6 +46,11 @@ internal class Program
 
                 case '4':
                     Processa(Process1);
+
+                    goto Start;
+
+                case '5':
+                    Processa(Process2);
 
                     goto Start;
 
@@ -120,6 +126,23 @@ internal class Program
         var enumerator = new ListEnumerator();
 
         Parallel.For(0, 7, (i) =>
+        {
+            Task.WhenAll(enumerator.EnumerateColorsAsync(i), enumerator.EnumerateFruitsAsync(i)).Wait();
+        });
+
+        enumerator.Result();
+    }
+
+    public static void Process2()
+    {
+        var enumerator = new ListEnumerator();
+
+        ParallelOptions options = new()
+        {
+            MaxDegreeOfParallelism = 2
+        };
+
+        Parallel.For(0, 7, options, (i) =>
         {
             Task.WhenAll(enumerator.EnumerateColorsAsync(i), enumerator.EnumerateFruitsAsync(i)).Wait();
         });
