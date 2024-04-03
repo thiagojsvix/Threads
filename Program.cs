@@ -160,8 +160,7 @@ public class ListEnumerator
         List<string> frutas = ["Abaxi", "Banana", "Carambola", "Damasco", "Ervilha", "Fruta do Conde", "Goiaba"];
 
         // Processa a fruta
-        //list.Add($"Thread {Thread.CurrentThread.ManagedThreadId} - Indice: {i} - Fruta {frutas[i]}.");
-        Console.WriteLine($"Thread {Thread.CurrentThread.ManagedThreadId} - Indice: {i} - Fruta {frutas[i]}.");
+        list.Add($"Thread {Thread.CurrentThread.ManagedThreadId} - Indice: {i} - Fruta {frutas[i]}.");
 
         // Simula um processamento mais longo
         await Task.Delay(500);
@@ -172,8 +171,7 @@ public class ListEnumerator
         List<string> Cores = ["Azul", "Branco", "Cinza", "Dourado", "Esmeralda", "Fúcsia", "Grená"];
 
         // Processa a cor
-        //list.Add($"Thread {Thread.CurrentThread.ManagedThreadId} - Indice: {i} - Cor {Cores[i]}.");
-        Console.WriteLine($"Thread {Thread.CurrentThread.ManagedThreadId} - Indice: {i} - Cor {Cores[i]}.");
+        list.Add($"Thread {Thread.CurrentThread.ManagedThreadId} - Indice: {i} - Cor {Cores[i]}.");
 
         // Simula um processamento mais longo
         await Task.Delay(500);
